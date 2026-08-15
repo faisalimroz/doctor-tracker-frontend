@@ -49,9 +49,16 @@ npm run dev
 Open http://localhost:3000 in your browser.
 
 💡 Technical Decisions
-URL-Synchronized State (useSearchParams): Filter parameters are bound directly to Next.js URL query parameters for shareable deep links and browser history navigation.
+💡 Technical Decisions
+1. URL-Synchronized State (useSearchParams)
+Decision: Filter parameters (search text, specialization filters, date ranges) are bound directly to Next.js URL query parameters rather than local component states.
 
-Lightweight Global State (React Context API): Used React Context API for managing authentication state to eliminate boilerplate code and optimize bundle performance.
+Rationale: This enables shareable deep links, supports seamless browser back/forward navigation history, and preserves filter states on page reloads.
+
+2. Lightweight Global State (React Context API)
+Decision: Used React Context API for managing authentication state instead of bulky state containers like Redux.
+
+Rationale: Since global state is primarily scoped to user authentication sessions and theme preferences, Context API eliminates boilerplate code while optimizing bundle performance.
 
 📷 Visual Evidence & Deployment
 Live Application URL: https://doctor-tracker-admin-panel.vercel.app/login
