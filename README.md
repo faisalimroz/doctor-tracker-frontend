@@ -36,8 +36,22 @@ JWT_SECRET=supersecretjwtsecretkeychangeinproduction123
 JWT_EXPIRE=30d
 NODE_ENV=development
 **
-bash```
-###n2. Frontend Setup (frontend/)
+### 2 . Frontend Setup (frontend/)
 Navigate to your frontend folder and install dependencies:
 cd frontend
 npm install
+Create a .env.local file in the root of the frontend directory:
+NEXT_PUBLIC_API_URL=[https://doctor-tracker-backend-4gto.onrender.com/api/v1](https://doctor-tracker-backend-4gto.onrender.com/api/v1)
+Start the Next.js development server:
+
+npm run dev
+
+Open http://localhost:3000 in your browser.
+
+💡 Technical Decisions
+URL-Synchronized State (useSearchParams): Filter parameters are bound directly to Next.js URL query parameters for shareable deep links and browser history navigation.
+
+Lightweight Global State (React Context API): Used React Context API for managing authentication state to eliminate boilerplate code and optimize bundle performance.
+
+📷 Visual Evidence & Deployment
+Live Application URL: Access Doctor Tracker Live
