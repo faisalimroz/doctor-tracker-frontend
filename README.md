@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Doctor Tracker — Complete Project Documentation & Overview
+🚀 1. Elevator Pitch
+Doctor Tracker is a production-ready, full-stack administrative web application built to streamline healthcare management. It bridges the gap between hospital medical staff and patient records by providing administrators with a lightning-fast, highly secure portal to manage doctor directories, track associated patient admissions, monitor clinical metrics in real-time through visual analytics, and securely manage multi-admin access control.
 
-## Getting Started
+🛠️ 2. Setup Guide
+Follow these instructions to run the frontend and backend applications locally on your machine.
 
-First, run the development server:
+Prerequisites
+Node.js (v18+ recommended)
 
-```bash
+MongoDB database instance (Local or MongoDB Atlas)
+
+Backend Setup (backend/)
+Clone the repository and navigate into the backend directory.
+
+Create a .env file using the following template:
+
+Code snippet
+MONGODB_URI=mongodb+srv://doctor:_6anS-XNRzz7GN8@morning.c6gwelo.mongodb.net/?appName=Morning
+JWT_SECRET=supersecretjwtsecretkeychangeinproduction123
+JWT_EXPIRE=30d
+NODE_ENV=development
+Install dependencies and start the server:
+
+Bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Frontend Setup (frontend/)
+Navigate into the frontend directory.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Create a .env.local file using the following template:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Code snippet
+NEXT_PUBLIC_API_URL=https://doctor-tracker-backend-4gto.onrender.com/api/v1
+Install dependencies and start the development server:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Bash
+npm install
+npm run dev
+Open http://localhost:3000 in your browser to view the application.
 
-## Learn More
+🏗️ 3. System Architecture
+Doctor Tracker follows a decoupled client-server architecture:
 
-To learn more about Next.js, take a look at the following resources:
+Frontend (Client): Built with Next.js (App Router), leveraging React Context API for global session and authentication management, and Next.js URL Search Parameters (useSearchParams) for clean, shareable filter and pagination states.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Backend (Server): Standalone Node.js/Express REST API communicating securely via JSON Web Tokens (JWT).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Data Flow & Service Interactions:
 
-## Deploy on Vercel
+Client sends authenticated HTTP requests containing Bearer tokens to /api/v1 endpoints.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Protected middleware validates credentials against the Admin collection in MongoDB via Mongoose.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+UI components reactively update state based on API query parameters (search queries, date ranges, and specialization filters).
+
+💡 4. Technical Decisions Deep Dive
+Next.js App Router & URL Search Parameters (useSearchParams):
+
+Decision: Filter states (such as search queries, specialization filters, and date ranges) are synchronized directly with URL search parameters instead of being trapped solely in local component state.
+
+Rationale: This ensures that search queries and pagination states are shareable via URL links, support native browser back/forward navigation seamlessly, and allow deep-linking directly into filtered administrative views.
+
+React Context API vs. Heavy State Management Libraries:
+
+Decision: Utilized React Context API for managing global admin session data instead of Redux or heavy third-party stores.
+
+Rationale: Since the primary global application state is lightweight (handling authentication tokens, admin session status, and theme preferences), Context API eliminates unnecessary boilerplate overhead while keeping bundle size optimized.
+
+📷 5. Visual Evidence & Live Deployment
+Live Production Deployment URL: Doctor Tracker Live Login
+
+Desktop View Layout
+Features a fully responsive sidebar navigation, modern metric cards with Recharts analytics, and structured data tables equipped with instant search and multi-column filtering.
+
+Mobile Responsive View
+Optimized card-based layouts and collapsible mobile menus ensuring 100% responsiveness across mobile, tablet, and desktop viewports.
