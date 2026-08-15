@@ -30,9 +30,13 @@ Navigate to your backend folder and install dependencies:
 ```bash
 cd backend
 npm install
-### 2. Create .env file in the root of the backend directory
 PORT=5000
 MONGODB_URI=mongodb+srv://doctor:_6anS-XNRzz7GN8@morning.c6gwelo.mongodb.net/?appName=Morning
 JWT_SECRET=supersecretjwtsecretkeychangeinproduction123
 JWT_EXPIRE=30d
 NODE_ENV=development
+**
+###n2. Frontend Setup (frontend/)
+Navigate to your frontend folder and install dependencies:
+cd frontend
+npm install
