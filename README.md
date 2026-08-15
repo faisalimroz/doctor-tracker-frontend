@@ -23,7 +23,7 @@ Doctor Tracker implements a robust, decoupled client-server architecture:
 
 ## 🛠️ Setup Guide
 
-### 1. Backend Setup (`backend/`)
+### 1. Setup 
 
 Navigate to your backend folder and install dependencies:
 
@@ -54,4 +54,4 @@ URL-Synchronized State (useSearchParams): Filter parameters are bound directly t
 Lightweight Global State (React Context API): Used React Context API for managing authentication state to eliminate boilerplate code and optimize bundle performance.
 
 📷 Visual Evidence & Deployment
-Live Application URL: Access Doctor Tracker Live
+Live Application URL: https://doctor-tracker-admin-panel.vercel.app/login
