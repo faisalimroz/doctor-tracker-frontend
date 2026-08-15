@@ -2,7 +2,6 @@
 
 **A production-ready, full-stack healthcare administrative management portal**
 
-[View Live Demo](https://doctor-tracker-admin-panel.vercel.app/login) • [Architecture](#-system-architecture) • [Setup Guide](#-setup-guide) • [Technical Decisions](#-technical-decisions)
 
 ---
 
