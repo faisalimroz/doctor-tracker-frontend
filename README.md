@@ -1,77 +1,40 @@
-Doctor Tracker — Complete Project Documentation & Overview
-🚀 1. Elevator Pitch
-Doctor Tracker is a production-ready, full-stack administrative web application built to streamline healthcare management. It bridges the gap between hospital medical staff and patient records by providing administrators with a lightning-fast, highly secure portal to manage doctor directories, track associated patient admissions, monitor clinical metrics in real-time through visual analytics, and securely manage multi-admin access control.
+<div align="center">
 
-🛠️ 2. Setup Guide
-Follow these instructions to run the frontend and backend applications locally on your machine.
+# 🩺 Doctor Tracker — Admin Panel
 
-Prerequisites
-Node.js (v18+ recommended)
+<p align="center">
+  <b>A production-ready, full-stack healthcare administrative management portal</b>
+</p>
 
-MongoDB database instance (Local or MongoDB Atlas)
+<p align="center">
+  <a href="https://doctor-tracker-admin-panel.vercel.app/login"><b>View Live Demo</b></a> •
+  <a href="#-system-architecture"><b>Architecture</b></a> •
+  <a href="#-setup-guide"><b>Setup Guide</b></a> •
+  <a href="#-technical-decisions"><b>Technical Decisions</b></a>
+</p>
 
-Backend Setup (backend/)
-Clone the repository and navigate into the backend directory.
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js-14+-black?style=flat-square&logo=next.js" alt="Next.js" />
+  <img src="https://img.shields.io/badge/Node.js-Express-green?style=flat-square&logo=node.js" alt="Node.js" />
+  <img src="https://img.shields.io/badge/MongoDB-Mongoose-brightgreen?style=flat-square&logo=mongodb" alt="MongoDB" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-UI-blue?style=flat-square&logo=tailwind-css" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/Deployment-Vercel%20%2F%20Render-orange?style=flat-square" alt="Deployment" />
+</p>
 
-Create a .env file using the following template:
+</div>
 
-Code snippet
-MONGODB_URI=mongodb+srv://doctor:_6anS-XNRzz7GN8@morning.c6gwelo.mongodb.net/?appName=Morning
-JWT_SECRET=supersecretjwtsecretkeychangeinproduction123
-JWT_EXPIRE=30d
-NODE_ENV=development
-Install dependencies and start the server:
+---
 
-Bash
-npm install
-npm run dev
-Frontend Setup (frontend/)
-Navigate into the frontend directory.
+## 🚀 Elevator Pitch
 
-Create a .env.local file using the following template:
+**Doctor Tracker** is a secure, full-stack administrative web application built to streamline healthcare management operations. It bridges the gap between medical staff directories and patient records by empowering administrators with a lightning-fast portal to:
+* Manage doctor profiles, specializations, and hospital affiliations.
+* Track associated patient admissions, diagnoses, and medical histories.
+* Monitor clinical metrics and distribution analytics in real-time via interactive charts.
+* Securely control multi-admin access authentication.
 
-Code snippet
-NEXT_PUBLIC_API_URL=https://doctor-tracker-backend-4gto.onrender.com/api/v1
-Install dependencies and start the development server:
+---
 
-Bash
-npm install
-npm run dev
-Open http://localhost:3000 in your browser to view the application.
+## 🏗️ System Architecture
 
-🏗️ 3. System Architecture
-Doctor Tracker follows a decoupled client-server architecture:
-
-Frontend (Client): Built with Next.js (App Router), leveraging React Context API for global session and authentication management, and Next.js URL Search Parameters (useSearchParams) for clean, shareable filter and pagination states.
-
-Backend (Server): Standalone Node.js/Express REST API communicating securely via JSON Web Tokens (JWT).
-
-Data Flow & Service Interactions:
-
-Client sends authenticated HTTP requests containing Bearer tokens to /api/v1 endpoints.
-
-Protected middleware validates credentials against the Admin collection in MongoDB via Mongoose.
-
-UI components reactively update state based on API query parameters (search queries, date ranges, and specialization filters).
-
-💡 4. Technical Decisions Deep Dive
-Next.js App Router & URL Search Parameters (useSearchParams):
-
-Decision: Filter states (such as search queries, specialization filters, and date ranges) are synchronized directly with URL search parameters instead of being trapped solely in local component state.
-
-Rationale: This ensures that search queries and pagination states are shareable via URL links, support native browser back/forward navigation seamlessly, and allow deep-linking directly into filtered administrative views.
-
-React Context API vs. Heavy State Management Libraries:
-
-Decision: Utilized React Context API for managing global admin session data instead of Redux or heavy third-party stores.
-
-Rationale: Since the primary global application state is lightweight (handling authentication tokens, admin session status, and theme preferences), Context API eliminates unnecessary boilerplate overhead while keeping bundle size optimized.
-
-📷 5. Visual Evidence & Live Deployment
-Live Production Deployment URL: Doctor Tracker Live Login
-
-Desktop View Layout
-Features a fully responsive sidebar navigation, modern metric cards with Recharts analytics, and structured data tables equipped with instant search and multi-column filtering.
-
-Mobile Responsive View
-Optimized card-based layouts and collapsible mobile menus ensuring 100% responsiveness across mobile, tablet, and desktop viewports.
+Doctor Tracker implements a robust, decoupled **client-server architecture**:
