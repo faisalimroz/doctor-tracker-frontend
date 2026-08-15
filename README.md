@@ -36,6 +36,7 @@ JWT_SECRET=supersecretjwtsecretkeychangeinproduction123
 JWT_EXPIRE=30d
 NODE_ENV=development
 **
+```bash
 ###n2. Frontend Setup (frontend/)
 Navigate to your frontend folder and install dependencies:
 cd frontend
